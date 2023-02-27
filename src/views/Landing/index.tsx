@@ -2,9 +2,10 @@ import React, { useEffect } from "react";
 import Button from "../../components/Button";
 import { useLoginMutation } from "../../store/services/userService";
 import useForm from "../../hooks/useForm/useForm";
-import { formFields, loginValidations } from "../../constants/login";
 import Form from "../../components/Form";
 import { useNavigate } from "react-router";
+import { loginValidations } from "@/constants/validations/login";
+import Forms from "../../constants/forms";
 import "./landing.css";
 
 const Landing: React.FC = (): JSX.Element => {
@@ -35,7 +36,7 @@ const Landing: React.FC = (): JSX.Element => {
         </h1>
         <div className="row-span-2">
           <Form
-            formFields={formFields}
+            formFields={Forms.get("login") as FormField[]}
             formErrors={formErrors}
             handleChange={handleChange}
             formData={formValues}

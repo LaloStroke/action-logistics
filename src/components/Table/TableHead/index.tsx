@@ -1,14 +1,24 @@
-import React from "react";
+const TableHeader = <T, K extends keyof T>({
+  columns
+}: TableHeaderProps<T, K>): JSX.Element => {
+  const headers = columns.map((column, index) => {
+    const style = {
+      width: column.width ?? 100,
+      borderBottom: "2px solid black"
+    };
 
-const TableHeadItem: React.FC<{ item: string }> = ({ item }): JSX.Element => {
+    return (
+      <th key={`headCell-${index}`} style={style}>
+        {column.header}
+      </th>
+    );
+  });
+
   return (
-    <td
-      title={item}
-      className="font-bold truncate text-center border-r-2 border-b-2 border-black text-sm"
-    >
-      {item}
-    </td>
+    <thead>
+      <tr>{headers}</tr>
+    </thead>
   );
 };
 
-export default TableHeadItem;
+export default TableHeader;

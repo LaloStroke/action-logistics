@@ -21,7 +21,10 @@ const Form: React.FC<{
   onSubmit
 }): JSX.Element => {
   return (
-    <form onSubmit={onSubmit} className="flex gap-2 flex-col bg-transparent">
+    <form
+      onSubmit={onSubmit}
+      className="flex gap-4 flex-wrap bg-transparent items-left justify-center"
+    >
       {formFields.map((field: FormField) => {
         return (
           <Input
@@ -34,6 +37,7 @@ const Form: React.FC<{
             placeholder={field.placeholder}
             value={formData[field.name]}
             handleChange={handleChange}
+            widthInDesktop={field.widthInDesktop}
           />
         );
       })}

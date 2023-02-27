@@ -1,13 +1,25 @@
 import React, { useRef, useState, useEffect, ReactNode } from "react";
 import { SelectContext } from "./SelectContext";
 import useOnClickOutside from "../../hooks/useOnClickOutside/useOnClickOutside";
+import { IoMdArrowDropup } from "react-icons/io";
 
 const Select: React.FC<{
   children: ReactNode | ReactNode[];
   defaultValue?: string;
   placeholder?: string;
+  onHover?: boolean;
+  staticPlaceholder?: string;
   selectHandler?: (values: any) => void;
-}> = ({ children, selectHandler, defaultValue, placeholder }): JSX.Element => {
+  className?: string;
+}> = ({
+  children,
+  className,
+  selectHandler,
+  staticPlaceholder,
+  defaultValue,
+  onHover,
+  placeholder
+}): JSX.Element => {
   const [selectedOption, setSelectedOption] = useState<string>(
     defaultValue || ""
   );
@@ -33,14 +45,32 @@ const Select: React.FC<{
     <SelectContext.Provider
       value={{ selectedOption, changeSelectedOption: updateSelectedOption }}
     >
-      <div className="select" ref={selectRef} onClick={handleIsOpen}>
-        <span className="select__span">
-          {selectedOption.length > 0 ? selectedOption : selectPlaceHolder}
-          <i
-            className={`${"fa-solid fa-caret-up"} ${isOpen ? "" : "rotate"}`}
-          ></i>
+      <div
+        className={
+          className
+            ? className
+            : "bg-yellow rounded-md p-4 relative w-56 cursor-pointer border-none"
+        }
+        onMouseEnter={onHover ? handleIsOpen : undefined}
+        onMouseLeave={onHover ? handleIsOpen : undefined}
+        ref={selectRef}
+        onClick={handleIsOpen}
+      >
+        <span className="flex h-full justify-between items-center">
+          {staticPlaceholder
+            ? staticPlaceholder
+            : selectedOption || selectPlaceHolder}
+          <div
+            className={`duration-300 scale-125 ${isOpen ? "" : "rotate-180"}`}
+          >
+            <IoMdArrowDropup />
+          </div>
         </span>
-        {isOpen && <ul className="select__options">{children}</ul>}
+        {isOpen && (
+          <ul className="bg-yellow list-none absolute w-48 flex flex-col right-[-2.5rem] top-[3.25rem] z-10">
+            {children}
+          </ul>
+        )}
       </div>
     </SelectContext.Provider>
   );

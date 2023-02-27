@@ -6,3 +6,23 @@ body,
 #root {
   @apply min-h-screen bg-gray-100;
 }
+
+.full {
+  @apply md:w-full;
+}
+
+.half {
+  @apply md:w-2/3;
+}
+
+.third {
+  @apply md:w-1/3;
+}
+
+.quarter {
+  @apply md:w-1/4;
+}
+
+.small {
+  @apply md:w-1/6;
+}

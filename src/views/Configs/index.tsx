@@ -1,7 +1,7 @@
-import Layout from "../../components/Layout";
 import React from "react";
+import Layout from "../../components/Layout";
 
-const Configs = () => {
+const Configs: React.FC = (): JSX.Element => {
   return (
     <>
       <Layout>

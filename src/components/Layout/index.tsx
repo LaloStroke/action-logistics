@@ -1,16 +1,14 @@
 import React from "react";
 import Navbar from "../Navbar";
 
-const Layout: React.FC<{ children: JSX.Element[] }> = ({
+const Layout: React.FC<{ children: JSX.Element | JSX.Element[] }> = ({
   children
 }): JSX.Element => {
   return (
-    <>
-      <main className="">
-        <Navbar />
-        {children}
-      </main>
-    </>
+    <main className="">
+      <Navbar />
+      {children}
+    </main>
   );
 };
 

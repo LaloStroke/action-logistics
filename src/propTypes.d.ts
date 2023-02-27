@@ -17,7 +17,10 @@ declare type FormField = {
   name: string;
   placeholder: string;
   label: string;
+  widthInDesktop?: Widths;
 };
+
+declare type Widths = "full" | "half" | "third" | "quarter" | "small";
 
 declare type TFieldValidationsOption = {
   condition: string | boolean | number | ((value1: any) => unknown);
@@ -39,4 +42,18 @@ declare type TValidationOptions = {
 declare type TFieldValidations = {
   key: string;
   validations?: TValidationOptions;
+};
+
+declare type TableProps<T, K extends keyof T> = {
+  data: Array<T>;
+  columns: Array<ColumnDefinitionType<T, K>>;
+};
+
+declare type TableHeaderProps<T, K extends keyof T> = {
+  columns: Array<ColumnDefinitionType<T, K>>;
+};
+
+type TableRowsProps<T, K extends keyof T> = {
+  data: Array<T>;
+  columns: Array<ColumnDefinitionType<T, K>>;
 };

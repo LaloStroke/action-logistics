@@ -3,6 +3,7 @@ import React from "react";
 const Input: React.FC<{
   label?: string;
   value?: string;
+  widthInDesktop?: Widths;
   textArea?: boolean;
   error?: IStandardValidatorResponse;
   name?: string;
@@ -19,13 +20,14 @@ const Input: React.FC<{
   value,
   textArea,
   type,
+  widthInDesktop,
   placeholder,
   name,
   error
 }): JSX.Element => {
   return (
-    <label className="grid">
-      {label}
+    <label className={`grid w-full  ${widthInDesktop}`}>
+      <span className="ml-2"> {label}</span>
       {textArea && (
         <textarea
           className="ring-2 ring-slate-500 bg-transparent p-2 rounded-md outline-none"
@@ -37,7 +39,7 @@ const Input: React.FC<{
       )}
       {!textArea && (
         <input
-          className="ring-2 ring-slate-500 p-2 rounded-md outline-none"
+          className="ring-2 flex-1 ring-slate-500 p-2 rounded-md outline-none"
           placeholder={placeholder}
           type={type}
           name={name}

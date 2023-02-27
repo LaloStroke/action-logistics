@@ -1,21 +1,28 @@
 import React from "react";
 
-const TableRow: React.FC<{ data: DataTable }> = ({ data }): JSX.Element => {
-  const propValues = Object.values(data);
-  return (
-    <tr>
-      {propValues.map((item) => {
-        return (
-          <td
-            key={item as number}
-            className="truncate text-center border-r border-black text-xs"
-          >
-            {item}
-          </td>
-        );
-      })}
-    </tr>
-  );
+const style = {
+  border: "1px solid black"
 };
 
-export default TableRow;
+const TableRows = <T, K extends keyof T>({
+  data,
+  columns
+}: TableRowsProps<T, K>): JSX.Element => {
+  const rows = data.map((row, index) => {
+    return (
+      <tr key={`row-${index}`}>
+        {columns.map((column, index2) => {
+          return (
+            <td key={`cell-${index2}`} style={style}>
+              {row[column.key] as React.ReactNode}
+            </td>
+          );
+        })}
+      </tr>
+    );
+  });
+
+  return <tbody>{rows}</tbody>;
+};
+
+export default TableRows;

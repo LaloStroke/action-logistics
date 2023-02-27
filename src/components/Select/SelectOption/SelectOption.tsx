@@ -8,7 +8,10 @@ const SelectOption: React.FC<{
   const { changeSelectedOption } = useSelectContext();
 
   return (
-    <li className="option" onClick={() => changeSelectedOption(value)}>
+    <li
+      className="cursor-pointer duration-300 grid place-items-center text-sm text-left rounded-md py-2 px-4 hover:tracking-tighter"
+      onClick={() => changeSelectedOption(value)}
+    >
       {children}
     </li>
   );

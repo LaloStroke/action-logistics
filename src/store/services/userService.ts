@@ -11,9 +11,18 @@ const userService = rootServices.injectEndpoints({
           password
         }
       })
+    }),
+    setLocation: build.mutation<any, Location>({
+      query: ({ data }) => ({
+        url: () => `location`,
+        method: "POST",
+        data: {
+          data
+        }
+      })
     })
   })
 });
 
-export const { useLoginMutation } = userService;
+export const { useLoginMutation, useSetLocationMutation } = userService;
 export default userService;

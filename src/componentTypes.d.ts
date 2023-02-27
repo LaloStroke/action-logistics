@@ -14,3 +14,9 @@ declare type TInputs =
   | "week";
 
 declare type TButtons = "primary" | "secondary";
+
+declare type ColumnDefinitionType<T, K extends keyof T> = {
+  key: K;
+  header: string;
+  width?: number;
+};

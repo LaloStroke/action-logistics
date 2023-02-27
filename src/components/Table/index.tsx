@@ -1,25 +1,15 @@
 import React from "react";
-import TableRow from "./TableRow";
-import TableHeadItem from "./TableHead";
+import TableHeader from "./TableHead";
+import TableRows from "./TableRow";
 
-const Table: React.FC<{ theadData: any[]; tbodyData: any[] }> = ({
-  theadData,
-  tbodyData
-}): JSX.Element => {
+const Table = <T, K extends keyof T>({
+  data,
+  columns
+}: TableProps<T, K>): JSX.Element => {
   return (
-    <table className="">
-      <thead>
-        <tr>
-          {theadData.map((h) => {
-            return <TableHeadItem key={h} item={h} />;
-          })}
-        </tr>
-      </thead>
-      <tbody>
-        {tbodyData.map((item) => {
-          return <TableRow key={item.id} data={item.items} />;
-        })}
-      </tbody>
+    <table>
+      <TableHeader columns={columns} />
+      <TableRows data={data} columns={columns} />
     </table>
   );
 };

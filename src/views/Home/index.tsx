@@ -7,20 +7,6 @@ import Layout from "../../components/Layout";
 const Home: React.FC = (): JSX.Element => {
   const [selectedOption, setSelectedOption] = useState<string>("");
 
-  const theadData = [
-    "Status Operation",
-    "ID",
-    "S/N",
-    "Name",
-    "Manufacturer",
-    "Desc",
-    "Type",
-    "Sub-type",
-    "Owner",
-    "Location",
-    "Status Location"
-  ];
-
   const tbodyData: Logistics[] = [
     {
       Address: "1234 Main St",

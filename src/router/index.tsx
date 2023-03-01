@@ -6,6 +6,7 @@ import Transactions from "../views/Transactions";
 import Catalogs from "../views/Catalogs";
 import NotFound from "../views/NotFound";
 import Configs from "../views/Configs";
+import Logistics from "@/views/Forms/Logistics";
 
 const Router: React.FC = (): JSX.Element => {
   return (
@@ -14,7 +15,7 @@ const Router: React.FC = (): JSX.Element => {
         <Route path="/" element={<Landing />} />
         <Route path="/Home" element={<Home />} />
         <Route path="/Transactions" element={<Transactions />} />
-        <Route path="/Catalogs" element={<Catalogs />} />
+        <Route path="/Catalogs/:selectedOption" element={<Catalogs />} />
         <Route path="/Configs" element={<Configs />} />
         <Route path="*" element={<NotFound />} />
       </Switch>

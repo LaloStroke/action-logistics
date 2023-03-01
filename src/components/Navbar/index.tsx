@@ -107,7 +107,7 @@ const Navbar: React.FC = (): JSX.Element => {
           >
             {catalogPoints.map((catalogPoints) => (
               <SelectOption key={catalogPoints} value={catalogPoints}>
-                {catalogPoints}
+                <Link to={catalogPoints}>{catalogPoints}</Link>
               </SelectOption>
             ))}
           </Select>

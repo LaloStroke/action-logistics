@@ -20,6 +20,8 @@ declare type FormField = {
   widthInDesktop?: Widths;
 };
 
+declare type optionsSelect = string;
+
 declare type Widths = "full" | "half" | "third" | "quarter" | "small";
 
 declare type TFieldValidationsOption = {

@@ -1,9 +1,15 @@
 .open {
   grid-area: header;
   width: 16rem;
+  border: solid;
+  border-color: red;
+  transition-duration: 0.3s;
 }
 
 .close {
   grid-area: header;
   width: 3rem;
+  border: solid;
+  border-color: red;
+  transition-duration: 0.3s;
 }

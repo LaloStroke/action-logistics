@@ -7,16 +7,31 @@
 
 .content {
   grid-area: content;
+  padding: 1rem;
 }
 
 @media (min-width: 768px) {
-  .layout {
+  .layout_open {
     padding: 1rem;
     min-height: 100vh;
     grid-template-areas:
       "header content"
       "header content";
     grid-template-rows: 1fr;
-    grid-template-columns: 3rem calc(100vw - 6rem);
+    grid-template-columns: 16rem 1fr;
+    transition-duration: 0.3s;
+    @apply grid;
+  }
+
+  .layout_close {
+    padding: 1rem;
+    min-height: 100vh;
+    grid-template-areas:
+      "header content"
+      "header content";
+    grid-template-rows: 1fr;
+    grid-template-columns: 3rem 1fr;
+    transition-duration: 0.3s;
+    @apply grid;
   }
 }

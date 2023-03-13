@@ -22,3 +22,9 @@ declare type Forms =
   | "Insurances companies"
   | "Insurance types"
   | "login";
+
+declare type SelectOptions =
+  | "Assets"
+  | "Transactions"
+  | "CatalogPoints"
+  | "ConfigPoints";

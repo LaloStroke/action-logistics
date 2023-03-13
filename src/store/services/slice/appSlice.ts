@@ -4,7 +4,8 @@ const initialState: Store = {
   catalogSelected: "Locations",
   configSelected: "Locations",
   transactions: "Due",
-  assets: "All Assets"
+  assets: "All Assets",
+  sidebarOpen: false
 };
 
 const appSlice = createSlice({
@@ -25,6 +26,9 @@ const appSlice = createSlice({
     },
     setAssetsSelected: (state, action: PayloadAction<Assets>): void => {
       state.assets = action.payload;
+    },
+    setSidebarOpen: (state, action: PayloadAction<boolean>): void => {
+      state.sidebarOpen = action.payload;
     }
   }
 });
@@ -33,5 +37,6 @@ export const { setCatalogSelected } = appSlice.actions;
 export const { setConfigSelected } = appSlice.actions;
 export const { setTransactionSelected } = appSlice.actions;
 export const { setAssetsSelected } = appSlice.actions;
+export const { setSidebarOpen } = appSlice.actions;
 
 export default appSlice.reducer;

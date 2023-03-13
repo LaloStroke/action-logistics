@@ -51,12 +51,12 @@ const Home: React.FC = (): JSX.Element => {
   ];
 
   return (
-    <>
+    <div className="p-4">
       <Input type="search" placeholder="Search" widthInDesktop="third" />
       <div className="mt-8 flex justify-center">
         <Table columns={columns} data={tbodyData} />
       </div>
-    </>
+    </div>
   );
 };
 

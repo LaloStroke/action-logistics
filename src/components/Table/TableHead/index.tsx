@@ -1,10 +1,8 @@
-const TableHeader = <T, K extends keyof T>({
-  columns
-}: TableHeaderProps<T, K>): JSX.Element => {
+const TableHeader = <T, K extends keyof T>({ columns }: TableHeaderProps<T, K>): JSX.Element => {
   const headers = columns.map((column, index) => {
     const style = {
       width: column.width ?? 100,
-      borderBottom: "2px solid black"
+      borderBottom: '2px solid black',
     };
 
     return (
@@ -15,7 +13,7 @@ const TableHeader = <T, K extends keyof T>({
   });
 
   return (
-    <thead className="border border-spacing-4">
+    <thead className="border text-left border-spacing-4 bg-secondary">
       <tr>{headers}</tr>
     </thead>
   );

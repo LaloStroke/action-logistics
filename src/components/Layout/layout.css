@@ -1,38 +1,23 @@
 .layout {
   grid-template-areas:
-    "header content"
-    "header content";
-  @apply grid;
+    'header content'
+    'header content';
+  min-height: 100vh;
+  @apply grid h-full p-4 duration-300;
 }
 
 .content {
   grid-area: content;
-  padding: 1rem;
-  @apply grid place-items-center;
+  grid-template-rows: 1fr;
+  @apply h-full;
 }
 
 @media (min-width: 768px) {
   .layout_open {
-    padding: 1rem;
-    min-height: 100vh;
-    grid-template-areas:
-      "header content"
-      "header content";
-    grid-template-rows: 1fr;
     grid-template-columns: 16rem 1fr;
-    transition-duration: 0.3s;
-    @apply grid;
   }
 
   .layout_close {
-    padding: 1rem;
-    min-height: 100vh;
-    grid-template-areas:
-      "header content"
-      "header content";
-    grid-template-rows: 1fr;
     grid-template-columns: 3rem 1fr;
-    transition-duration: 0.3s;
-    @apply grid;
   }
 }

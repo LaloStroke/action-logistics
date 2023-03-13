@@ -1,15 +1,15 @@
 .button {
   @apply w-3/4 mx-auto text-center cursor-pointer text-white font-bold py-2 px-4 rounded duration-300 active:scale-90;
   &--primary {
-    @apply bg-secondary text-terciary;
+    @apply text-text w-32 bg-primary;
     &:hover {
-      @apply bg-blue-900;
+      @apply bg-secondary text-terciary;
     }
   }
   &--secondary {
-    @apply text-text w-32 bg-terciary;
+    @apply bg-secondary text-terciary;
     &:hover {
-      @apply bg-secondary text-terciary;
+      @apply bg-blue-400;
     }
   }
 }

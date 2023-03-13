@@ -28,7 +28,7 @@ const Input: React.FC<{
       <span> {label}</span>
       {textArea && (
         <textarea
-          className=""
+          className="ring-2 ring-primary rounded-sm p-2 object-fill outline-none"
           placeholder={placeholder}
           name={name}
           onInput={handleChange as any}
@@ -37,7 +37,7 @@ const Input: React.FC<{
       )}
       {!textArea && (
         <input
-          className="ring-2 ring-primary rounded-sm p-2 object-fill"
+          className="ring-2 ring-primary rounded-sm p-2 object-fill outline-none"
           placeholder={placeholder}
           type={type}
           name={name}

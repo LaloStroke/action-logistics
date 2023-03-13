@@ -1,15 +1,7 @@
-import React from "react";
-import Layout from "../../components/Layout";
+import React from 'react';
 
 const Transactions = () => {
-  return (
-    <>
-      <Layout>
-        <div>Transactions</div>
-        <></>
-      </Layout>
-    </>
-  );
+  return <div>Transactions</div>;
 };
 
 export default Transactions;

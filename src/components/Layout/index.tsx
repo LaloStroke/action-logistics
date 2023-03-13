@@ -1,20 +1,18 @@
 import React from "react";
 import Sidebar from "../Sidebar";
-import { useSelector } from "react-redux";
 import "./layout.css";
+import { useLocation } from "react-router";
 
 const Layout: React.FC<{ children: JSX.Element | JSX.Element[] }> = ({
   children
 }): JSX.Element => {
-  const isOpen = useSelector((state: { app: Store }) => state.app.sidebarOpen);
-  const handleStyles = isOpen ? "layout_open" : "layout_close";
+  let location = useLocation();
+  const ShowSidebar = location.pathname !== "/login";
   return (
-    <div className="layout">
-      <main className={handleStyles}>
-        <Sidebar />
-        <div className="content">{children}</div>
-      </main>
-    </div>
+    <main className={`${ShowSidebar ? "layout" : "w-full"} bg-terciary`}>
+      {location.pathname !== "/login" && <Sidebar />}
+      <div className="content">{children}</div>
+    </main>
   );
 };
 

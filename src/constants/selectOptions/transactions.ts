@@ -1,4 +1,4 @@
-const Transactions: Array<Transactions> = [
+const Transactions: optionsSelect[] = [
   "Due",
   "All",
   "Swap Request",

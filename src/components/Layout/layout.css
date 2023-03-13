@@ -8,6 +8,7 @@
 .content {
   grid-area: content;
   padding: 1rem;
+  @apply grid place-items-center;
 }
 
 @media (min-width: 768px) {

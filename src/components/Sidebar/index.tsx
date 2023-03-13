@@ -98,7 +98,7 @@ const Sidebar: React.FC = (): JSX.Element => {
           optionsStyle=""
         >
           {(Catalogs as string[]).map((Catalogs) => (
-            <CustomLink to="/create/Catalogs/Locations">
+            <CustomLink to={`/create/Catalogs/${Catalogs}`}>
               <SelectOption key={Catalogs} value={Catalogs}>
                 {Catalogs}
               </SelectOption>

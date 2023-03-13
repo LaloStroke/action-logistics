@@ -3,24 +3,63 @@ import Table from '../../components/Table';
 import { useState } from 'react';
 import Input from '../../components/Input';
 import Button from '../../components/Button';
+import { AiFillEye } from 'react-icons/ai';
 
 const Home: React.FC = (): JSX.Element => {
   const [selectedOption, setSelectedOption] = useState<string>('');
 
   const tbodyData: Logistics[] = [
     {
-      Address: '1234 Main St',
-      City: 'Anytown',
-      ID: '1234',
-      State: 'CA',
-      Assets: 'All Assets',
-      Location: 'All Locations',
-      LocationName: 'All Locations',
-      TotalAssets: 1234,
-      ZipCode: 12345,
+      ID: '1',
+      'S/N': '1',
+      name: 'name',
+      manufacturer: 'manufacturer',
+      Description: 'Description',
+      type: 'type',
+      subtype: 'subtype',
+      owner: 'owner',
+      location: 'location',
+      'status operation': 'status operation',
+      'status location': 'status location',
+      editable: (
+        <Button type="secondary" href="/edit/Catalogs/Locations/1233">
+          <AiFillEye />
+        </Button>
+      ),
+    },
+    {
+      ID: '1',
+      'S/N': '1',
+      name: 'name',
+      manufacturer: 'manufacturer',
+      Description: 'Description',
+      type: 'type',
+      subtype: 'subtype',
+      owner: 'owner',
+      location: 'location',
+      'status operation': 'status operation',
+      'status location': 'status location',
       editable: (
         <Button type="secondary" href="/edit/Catalogs/Locations/1234">
-          Edit
+          <AiFillEye />
+        </Button>
+      ),
+    },
+    {
+      ID: '1',
+      'S/N': '1',
+      name: 'name',
+      manufacturer: 'manufacturer',
+      Description: 'Description',
+      type: 'type',
+      subtype: 'subtype',
+      owner: 'owner',
+      location: 'location',
+      'status operation': 'status operation',
+      'status location': 'status location',
+      editable: (
+        <Button type="secondary" href="/edit/Catalogs/Locations/1232">
+          <AiFillEye />
         </Button>
       ),
     },
@@ -30,23 +69,59 @@ const Home: React.FC = (): JSX.Element => {
     {
       key: 'ID',
       header: 'ID',
-      width: 150,
+      width: 70,
     },
     {
-      key: 'Address',
-      header: 'Address',
+      key: 'S/N',
+      header: 'S/N',
+      width: 70,
     },
     {
-      key: 'City',
-      header: 'City',
+      key: 'name',
+      header: 'Name',
+      width: 70,
     },
     {
-      key: 'State',
-      header: 'State',
+      key: 'manufacturer',
+      header: 'Manufacturer',
+    },
+    {
+      key: 'Description',
+      header: 'Description',
+    },
+    {
+      key: 'type',
+      header: 'Type',
+      width: 70,
+    },
+    {
+      key: 'subtype',
+      header: 'Sub Type',
+      width: 70,
+    },
+    {
+      key: 'owner',
+      header: 'Owner',
+      width: 70,
+    },
+    {
+      key: 'location',
+      header: 'Location',
+      width: 70,
+    },
+    {
+      key: 'status operation',
+      header: 'Status Operation',
+      width: 70,
+    },
+    {
+      key: 'status location',
+      header: 'Status Location',
+      width: 70,
     },
     {
       key: 'editable',
-      header: 'Edit',
+      header: 'view',
     },
   ];
 

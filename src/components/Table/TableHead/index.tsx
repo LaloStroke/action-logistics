@@ -3,6 +3,7 @@ const TableHeader = <T, K extends keyof T>({ columns }: TableHeaderProps<T, K>):
     const style = {
       width: column.width ?? 100,
       borderBottom: '2px solid black',
+      padding: '0.5rem',
     };
 
     return (

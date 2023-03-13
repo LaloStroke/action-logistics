@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 const Input: React.FC<{
   label?: string;
@@ -10,9 +10,7 @@ const Input: React.FC<{
   type: TInputs;
   placeholder?: string;
   handleChange?: (
-    event:
-      | React.ChangeEvent<HTMLInputElement>
-      | React.ChangeEvent<HTMLTextAreaElement>
+    event: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>,
   ) => void;
 }> = ({
   label,
@@ -23,14 +21,14 @@ const Input: React.FC<{
   widthInDesktop,
   placeholder,
   name,
-  error
+  error,
 }): JSX.Element => {
   return (
     <label className={`grid w-full  ${widthInDesktop}`}>
       <span> {label}</span>
       {textArea && (
         <textarea
-          className="ring-2 ring-slate-500 bg-transparent p-2 rounded-md outline-none"
+          className=""
           placeholder={placeholder}
           name={name}
           onInput={handleChange as any}
@@ -39,7 +37,7 @@ const Input: React.FC<{
       )}
       {!textArea && (
         <input
-          className="ring-2 flex-1 ring-slate-500 p-2 rounded-md outline-none"
+          className="ring-2 ring-primary rounded-sm p-2 object-fill"
           placeholder={placeholder}
           type={type}
           name={name}
@@ -47,7 +45,7 @@ const Input: React.FC<{
           value={value}
         />
       )}
-      {error && <p className="text-sm font-bold">{error.message}</p>}
+      {error && <p className="text-sm font-bold text-error">{error.message}</p>}
     </label>
   );
 };

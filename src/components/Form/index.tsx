@@ -1,5 +1,5 @@
-import React from "react";
-import Input from "../Input";
+import React from 'react';
+import Input from '../Input';
 
 const Form: React.FC<{
   formData: { [key: string]: any };
@@ -8,22 +8,14 @@ const Form: React.FC<{
     [key: string]: any;
   };
   handleChange: (
-    event:
-      | React.ChangeEvent<HTMLInputElement>
-      | React.ChangeEvent<HTMLTextAreaElement>
+    event: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>,
   ) => void;
   onSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
-}> = ({
-  formFields,
-  formData,
-  handleChange,
-  formErrors,
-  onSubmit
-}): JSX.Element => {
+}> = ({ formFields, formData, handleChange, formErrors, onSubmit }): JSX.Element => {
   return (
     <form
       onSubmit={onSubmit}
-      className="flex gap-4 flex-wrap bg-transparent items-left justify-center"
+      className="grid grid-cols-12 gap-4 w-full max-w-2xl align-middle justify-evenly"
     >
       {formFields.map((field: FormField) => {
         return (

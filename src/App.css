@@ -9,21 +9,21 @@ html,
 }
 
 .full {
-  @apply md:w-full;
+  @apply md:col-span-12;
 }
 
 .half {
-  @apply md:w-2/3;
+  @apply md:col-span-6;
 }
 
 .third {
-  @apply md:w-1/3;
+  @apply md:col-span-4;
 }
 
 .quarter {
-  @apply md:w-1/4;
+  @apply md:col-span-3;
 }
 
 .small {
-  @apply md:w-1/6;
+  @apply md:col-span-2;
 }

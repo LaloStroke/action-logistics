@@ -1,12 +1,13 @@
 .layout {
   grid-template-areas:
-    "header content"
-    "header content";
+    'header content'
+    'header content';
   @apply grid;
 }
 
 .content {
   grid-area: content;
+  @apply grid place-items-center;
 }
 
 @media (min-width: 768px) {
@@ -14,8 +15,8 @@
     padding: 1rem;
     min-height: 100vh;
     grid-template-areas:
-      "header content"
-      "header content";
+      'header content'
+      'header content';
     grid-template-rows: 1fr;
     grid-template-columns: 3rem calc(100vw - 6rem);
   }

@@ -1,4 +1,0 @@
-.login {
-  grid-template-rows: 6rem 1fr 2rem;
-  @apply grid max-w-md bg-white  w-2/3 my-auto mx-auto gap-2 h-2/3 rounded-md p-4;
-}

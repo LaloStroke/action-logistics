@@ -4,9 +4,12 @@ import { useState } from 'react';
 import Input from '../../components/Input';
 import Button from '../../components/Button';
 import { AiFillEye } from 'react-icons/ai';
+import { useParams } from 'react-router';
+import Switch from '../../components/Switch';
 
 const Home: React.FC = (): JSX.Element => {
-  const [selectedOption, setSelectedOption] = useState<string>('');
+  const [inOperation, setInOperation] = useState<boolean>(false);
+  const { selectedAssetOption } = useParams();
 
   const tbodyData: Logistics[] = [
     {
@@ -125,9 +128,24 @@ const Home: React.FC = (): JSX.Element => {
     },
   ];
 
+  const handleSwitch = (): void => {
+    setInOperation(!inOperation);
+  };
+
   return (
     <div className="p-4">
-      <Input type="search" placeholder="Search" widthInDesktop="third" />
+      <div className="flex justify-between w-2/3 items-center	">
+        <div className="w-2/3">
+          <Input type="search" placeholder="Search" widthInDesktop="third" />
+        </div>
+        {selectedAssetOption === 'Operation' && (
+          <>
+            <span>Out Operation</span>
+            <Switch handleChange={handleSwitch} id="inOperation" value={inOperation} />
+            <span>In Operation</span>
+          </>
+        )}
+      </div>
       <div className="mt-8 flex justify-center">
         <Table columns={columns} data={tbodyData} />
       </div>

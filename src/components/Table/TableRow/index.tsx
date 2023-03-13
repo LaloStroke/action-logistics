@@ -10,10 +10,10 @@ const TableRows = <T, K extends keyof T>({
 }: TableRowsProps<T, K>): JSX.Element => {
   const rows = data.map((row, index) => {
     return (
-      <tr key={`row-${index}`}>
+      <tr className="h-12" key={`row-${index}`}>
         {columns.map((column, index2) => {
           return (
-            <td key={`cell-${index2}`} style={style}>
+            <td className="h-12" key={`cell-${index2}`} style={style}>
               {row[column.key] as React.ReactNode}
             </td>
           );
@@ -22,7 +22,7 @@ const TableRows = <T, K extends keyof T>({
     );
   });
 
-  return <tbody>{rows}</tbody>;
+  return <tbody className="h-12">{rows}</tbody>;
 };
 
 export default TableRows;

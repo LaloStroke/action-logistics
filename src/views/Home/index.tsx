@@ -3,6 +3,8 @@ import Table from "../../components/Table";
 import { useState } from "react";
 import Input from "../../components/Input";
 import Layout from "../../components/Layout";
+import Button from "../../components/Button";
+import Navbar from "../../components/Navbar";
 
 const Home: React.FC = (): JSX.Element => {
   const [selectedOption, setSelectedOption] = useState<string>("");
@@ -18,8 +20,11 @@ const Home: React.FC = (): JSX.Element => {
       LocationName: "All Locations",
       TotalAssets: 1234,
       ZipCode: 12345,
-      editable: <button>Edit</button>,
-      deletable: <button>Delete</button>
+      editable: (
+        <Button type="secondary" href="/edit/Catalogs/Locations/1234">
+          Edit
+        </Button>
+      )
     }
   ];
 
@@ -44,18 +49,17 @@ const Home: React.FC = (): JSX.Element => {
     {
       key: "editable",
       header: "Edit"
-    },
-    {
-      key: "deletable",
-      header: "Delete"
     }
   ];
 
   return (
     <>
       <Layout>
-        <Input type="search" placeholder="Search" />
-        <Table columns={columns} data={tbodyData} />
+        {/* <Navbar /> */}
+        <Input type="search" placeholder="Search" widthInDesktop="third" />
+        <div className="mt-8 flex justify-center">
+          <Table columns={columns} data={tbodyData} />
+        </div>
       </Layout>
     </>
   );

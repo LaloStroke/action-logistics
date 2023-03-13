@@ -15,7 +15,7 @@ const TableHeader = <T, K extends keyof T>({
   });
 
   return (
-    <thead>
+    <thead className="border border-spacing-4">
       <tr>{headers}</tr>
     </thead>
   );

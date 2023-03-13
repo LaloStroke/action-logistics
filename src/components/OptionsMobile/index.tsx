@@ -6,7 +6,7 @@ const OptionsMobile: React.FC<{
   onClose: React.Dispatch<React.SetStateAction<boolean>>;
 }> = ({ onClose }): JSX.Element => {
   return (
-    <div className="fixed top-0 left-0 h-screen w-screen bg-slate-500 flex flex-col items-center">
+    <div className="fixed top-0 right-0 h-screen w-80 bg-slate-500 flex flex-col items-center">
       <button onClick={() => onClose(false)} className="w-12 self-end h-12">
         <p className="items-center justify-center flex">
           <GrClose />

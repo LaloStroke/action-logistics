@@ -7,7 +7,7 @@ const Table = <T, K extends keyof T>({
   columns
 }: TableProps<T, K>): JSX.Element => {
   return (
-    <table>
+    <table className="h-full">
       <TableHeader columns={columns} />
       <TableRows data={data} columns={columns} />
     </table>

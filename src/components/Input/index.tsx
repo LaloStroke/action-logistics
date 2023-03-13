@@ -27,7 +27,7 @@ const Input: React.FC<{
 }): JSX.Element => {
   return (
     <label className={`grid w-full  ${widthInDesktop}`}>
-      <span className="ml-2"> {label}</span>
+      <span> {label}</span>
       {textArea && (
         <textarea
           className="ring-2 ring-slate-500 bg-transparent p-2 rounded-md outline-none"

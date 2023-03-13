@@ -1,0 +1,9 @@
+.open {
+  grid-area: header;
+  width: 16rem;
+}
+
+.close {
+  grid-area: header;
+  width: 3rem;
+}

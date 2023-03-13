@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
+import { Link, useMatch, useResolvedPath } from "react-router-dom";
 import useOnClickOutside from "../../hooks/useOnClickOutside/useOnClickOutside";
 import {
   setSidebarOpen,
@@ -44,13 +45,40 @@ const Sidebar: React.FC = (): JSX.Element => {
           className="w-28 bg-transparent rounded-md py-4 px-2 relative cursor-pointer border-none h-full"
         >
           {(Assets as string[]).map((Assets) => (
-            <SelectOption key={Assets} value={Assets}>
-              {Assets}
-            </SelectOption>
+            <CustomLink to={`/Assets/${Assets == "All Assets" ? "" : Assets}`}>
+              <SelectOption key={Assets} value={Assets}>
+                {Assets}
+              </SelectOption>
+            </CustomLink>
           ))}
         </Select>
       </div>
     </div>
+  );
+};
+
+const CustomLink: React.FC<{
+  to: string;
+  children: JSX.Element;
+  className?: string;
+}> = ({ to, children, className }) => {
+  const resolvedPath = useResolvedPath(to);
+  const isActive = useMatch({ path: resolvedPath.pathname, end: true });
+  return (
+    <Link
+      className={`${className ? className : "duration-300 w-28 h-full"} `}
+      to={to}
+    >
+      <div
+        className={`grid place-content-center px-4 h-full duration-300 cursor-pointer  ${
+          isActive
+            ? "bg-lightOrange duration-300 font-bold hover:tracking-normal"
+            : ""
+        }`}
+      >
+        {children}
+      </div>
+    </Link>
   );
 };
 

@@ -16,8 +16,10 @@ const Router: React.FC = (): JSX.Element => {
           <Route path="/Assets/:selectedAssetOption" element={<Home />} />
           <Route path="/Login" element={<Login />} />
           <Route path="/Transactions" element={<Transactions />} />
-          <Route path=":type/Catalogs/:catalog/:selectedOption" element={<Catalogs />} />
+          <Route path="/Transactions/:selectedTransactionsOption" element={<Transactions />} />
+          <Route path=":type/Catalogs/:selectedOption" element={<Catalogs />} />
           <Route path="/Configs" element={<Configs />} />
+          <Route path="/Configs/:selectedConfigOption" element={<Configs />} />
           <Route path="*" element={<NotFound />} />
         </Switch>
       </Layout>

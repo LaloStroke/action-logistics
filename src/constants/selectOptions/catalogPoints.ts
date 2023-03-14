@@ -1,11 +1,11 @@
-const CatalogPoints: optionsSelect[]= [
-  "Locations",
-  "Users",
-  "Manufacturers",
-  "Equipment Type",
-  "Equipment SubType",
-  "Insurances companies",
-  "Insurance types"
+const CatalogPoints: optionsSelect[] = [
+  'Locations',
+  'Users',
+  'Manufacturers',
+  'Equipment-type',
+  'Equipment-subType',
+  'Insurances-companies',
+  'Insurance-types',
 ];
 
 export { CatalogPoints };

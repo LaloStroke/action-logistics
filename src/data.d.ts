@@ -32,3 +32,65 @@ declare interface Transactions extends DefaultTableOptions {
 declare interface TransactionsHeaders {
   due: Transactions;
 }
+
+declare interface Locations extends DefaultTableOptions {
+  id: string;
+  'Location Name': string;
+  City: string;
+  Address: string;
+  'Zip Code': string;
+  Status: string;
+}
+
+declare interface UsersCatalog extends DefaultTableOptions {
+  id: string;
+  name: string;
+  'Last Lame': string;
+  'Employee No': number;
+  Email: string;
+  Telephone: string;
+  Location: string;
+  Status: string | boolean;
+}
+
+declare interface ManufacturerCatalog extends DefaultTableOptions {
+  id: string;
+  Manufacturer: string;
+  Description: string;
+  'Total Assets': number;
+}
+
+declare interface EquipmentTypeCatalog extends DefaultTableOptions {
+  id: string;
+  'Equipment type': string;
+  Description: string;
+  'Total Assets': number;
+}
+
+declare interface SubEquipmentTypeCatalog extends EquipmentTypeCatalog {
+  'Sub equipment type': string;
+}
+
+declare interface InsecureCompaniesCatalog extends DefaultTableOptions {
+  id: string;
+  Company: string;
+  Description: string;
+  'Total Assets': number;
+}
+
+declare interface InsuranceTypesCatalog extends DefaultTableOptions {
+  id: string;
+  'Insurence Type': string;
+  Description: string;
+  'Total Assets': number;
+}
+
+declare interface Catalogs {
+  Locations: Locations;
+  Users: UsersCatalog;
+  Manufacturers: ManufacturerCatalog;
+  'Equipment type': EquipmentTypeCatalog;
+  'Equipment sub-type': SubEquipmentTypeCatalog;
+  'Insecure Companies': InsecureCompaniesCatalog;
+  'Insurance types': InsuranceTypesCatalog;
+}

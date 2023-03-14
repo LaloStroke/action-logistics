@@ -20,11 +20,7 @@ const Layout: React.FC<{ children: JSX.Element | JSX.Element[] }> = ({
       } ${handleStyles} bg-terciary`}
     >
       {location.pathname !== "/login" && <Sidebar />}
-      <div
-        className={`${
-          ShowSidebar ? "h-full grid" : "content"
-        }`}
-      >
+      <div className={`${ShowSidebar ? "h-full grid" : "content"}`}>
         {children}
       </div>
     </main>

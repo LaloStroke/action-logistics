@@ -21,7 +21,7 @@ const Login: React.FC = (): JSX.Element => {
 
   useEffect((): void => {
     if (isError) {
-      navigate("/Assets");
+      navigate("/Assets/All");
     }
   }, [isError]);
 

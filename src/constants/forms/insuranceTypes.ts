@@ -1,6 +1,18 @@
 const InsuranceTypes: FormField[] = [
-  { placeholder: "Id", type: "text", name: "ID", label: "ID" },
-  { placeholder: "Company", type: "text", name: "Company", label: "Company" },
+  {
+    placeholder: "Id",
+    type: "text",
+    name: "ID",
+    label: "ID",
+    widthInDesktop: "third"
+  },
+  {
+    placeholder: "Company",
+    type: "text",
+    name: "Company",
+    label: "Company",
+    widthInDesktop: "third"
+  },
   {
     placeholder: "Description",
     type: "text",

@@ -28,18 +28,13 @@ const Catalogs: React.FC = (): React.ReactElement => {
     setLocation
   );
 
-  useEffect((): void => {
-    setEditable(catalog as string);
-  }, [type]);
-
   return (
     <div className="grid w-[90%] mx-auto my-4 place-items-center">
-      <p className="text-center font-bold text-lg">
-        {catalog}: {selectedOption}
-      </p>
+      <p className="text-center font-bold text-lg p-4">{selectedOption}</p>
       <Form
         formFields={
-          Forms.get(editable as Forms) || (Forms.get("login") as FormField[])
+          Forms.get(selectedOption as Forms) ||
+          (Forms.get("login") as FormField[])
         }
         formErrors={formErrors}
         handleChange={handleChange}

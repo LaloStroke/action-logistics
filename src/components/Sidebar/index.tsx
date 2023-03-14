@@ -16,17 +16,48 @@ import Select from "../Select";
 
 const Sidebar: React.FC = (): JSX.Element => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [selectAssetsOpen, setSelectAssetsOpen] = useState<boolean>(false);
+  const [selectTransactionsOpen, setSelectTransactionsOpen] =
+    useState<boolean>(false);
+  const [selectCatalogsOpen, setSelectCatalogsOpen] = useState<boolean>(false);
+  const [selectConfigsOpen, setSelectConfigsOpen] = useState<boolean>(false);
+
   const dispatch = useDispatch();
+
   const handleOpen = () => {
     setIsOpen(true);
   };
   const handleOutsideOpen = () => {
     setIsOpen(false);
   };
+
+  const handleSelectAssetsOpen = () => {
+    setSelectAssetsOpen(!selectAssetsOpen);
+  };
+  const handleSelectTransactionsOpen = () => {
+    setSelectTransactionsOpen(!selectTransactionsOpen);
+  };
+  const handleSelectCatalogsOpen = () => {
+    setSelectCatalogsOpen(!selectCatalogsOpen);
+  };
+  const handleSelectConfigsOpen = () => {
+    setSelectConfigsOpen(!selectConfigsOpen);
+  };
+
   const sidebarRef = useRef<HTMLDivElement>(null);
+  const selectAssetsRef = useRef<HTMLDivElement>(null);
+  const selectTransactionsRef = useRef<HTMLDivElement>(null);
+  const selectCatalogsRef = useRef<HTMLDivElement>(null);
+  const selectConfigsRef = useRef<HTMLDivElement>(null);
+
   useOnClickOutside(sidebarRef, handleOutsideOpen);
+  useOnClickOutside(selectAssetsRef, handleSelectAssetsOpen);
+  useOnClickOutside(selectTransactionsRef, handleSelectTransactionsOpen);
+  useOnClickOutside(selectCatalogsRef, handleSelectCatalogsOpen);
+  useOnClickOutside(selectConfigsRef, handleSelectConfigsOpen);
 
   const handleStyles = isOpen ? "open" : "close";
+
   const handleAssets = (value: Assets): void => {
     dispatch(setAssetsSelected(value));
   };
@@ -50,7 +81,7 @@ const Sidebar: React.FC = (): JSX.Element => {
   return (
     <div className={handleStyles} ref={sidebarRef} onClick={handleOpen}>
       Sidebar
-      <div>
+      <div ref={selectAssetsRef}>
         <Select
           onHover
           defaultValue={"All Assets"}
@@ -69,7 +100,7 @@ const Sidebar: React.FC = (): JSX.Element => {
           ))}
         </Select>
       </div>
-      <div>
+      <div ref={selectTransactionsRef}>
         <Select
           onHover
           defaultValue={"Due"}
@@ -86,7 +117,7 @@ const Sidebar: React.FC = (): JSX.Element => {
           ))}
         </Select>
       </div>
-      <div>
+      <div ref={selectCatalogsRef}>
         <Select
           onHover
           defaultValue={"Locations"}
@@ -103,7 +134,7 @@ const Sidebar: React.FC = (): JSX.Element => {
           ))}
         </Select>
       </div>
-      <div>
+      <div ref={selectConfigsRef}>
         <Select
           onHover
           defaultValue={"Locations"}

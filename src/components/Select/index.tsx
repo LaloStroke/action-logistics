@@ -53,10 +53,8 @@ const Select: React.FC<{
             ? className
             : "bg-yellow rounded-md p-4 relative w-56 cursor-pointer border-none"
         }
-        onMouseEnter={onHover ? handleIsOpen : undefined}
-        onMouseLeave={onHover ? handleIsOpen : undefined}
-        ref={selectRef}
         onClick={handleIsOpen}
+        ref={selectRef}
       >
         <span className="flex h-full justify-between items-center">
           {staticPlaceholder

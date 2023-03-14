@@ -1,7 +1,5 @@
 .layout {
-  grid-template-areas:
-    'header content'
-    'header content';
+  grid-template-areas: "header content";
   min-height: 100vh;
   @apply grid h-full p-4 duration-300;
 }

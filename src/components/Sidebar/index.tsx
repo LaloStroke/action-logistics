@@ -57,7 +57,6 @@ const Sidebar: React.FC = (): JSX.Element => {
   useOnClickOutside(selectConfigsRef, handleSelectConfigsOpen);
 
   const handleStyles = isOpen ? "open" : "close";
-
   const handleAssets = (value: Assets): void => {
     dispatch(setAssetsSelected(value));
   };
@@ -83,12 +82,10 @@ const Sidebar: React.FC = (): JSX.Element => {
       Sidebar
       <div ref={selectAssetsRef}>
         <Select
-          onHover
           defaultValue={"All Assets"}
           staticPlaceholder={"Assets"}
           selectHandler={handleAssets}
           placeholder="Assets"
-          className="w-28 bg-transparent rounded-md py-4 px-2 relative cursor-pointer border-none h-full"
         >
           {(Assets as string[]).map((Assets) => (
             <CustomLink
@@ -102,7 +99,6 @@ const Sidebar: React.FC = (): JSX.Element => {
       </div>
       <div ref={selectTransactionsRef}>
         <Select
-          onHover
           defaultValue={"Due"}
           staticPlaceholder={"Transactions"}
           selectHandler={handleTransactions}
@@ -119,7 +115,6 @@ const Sidebar: React.FC = (): JSX.Element => {
       </div>
       <div ref={selectCatalogsRef}>
         <Select
-          onHover
           defaultValue={"Locations"}
           staticPlaceholder={"Catalogs"}
           selectHandler={handleCatalogs}
@@ -136,7 +131,6 @@ const Sidebar: React.FC = (): JSX.Element => {
       </div>
       <div ref={selectConfigsRef}>
         <Select
-          onHover
           defaultValue={"Locations"}
           staticPlaceholder={"Configs"}
           selectHandler={handleConfigs}

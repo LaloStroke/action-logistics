@@ -22,7 +22,7 @@ const Layout: React.FC<{ children: JSX.Element | JSX.Element[] }> = ({
       {location.pathname !== "/login" && <Sidebar />}
       <div
         className={`${
-          ShowSidebar ? "h-full grid place-items-center" : "content"
+          ShowSidebar ? "h-full grid" : "content"
         }`}
       >
         {children}

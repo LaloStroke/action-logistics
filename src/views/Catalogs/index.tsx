@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import Form from '../../components/Form';
 import { useSetLocationMutation } from '../../store/services/userService';
 import useForm from '../../hooks/useForm/useForm';
 import Button from '../../components/Button';
 import { loginValidations } from '@/constants/validations/login';
 import Forms from '../../constants/forms';
-import { useParams } from 'react-router';
+import { useNavigate, useParams } from 'react-router';
 
 const Catalogs: React.FC = (): React.ReactElement => {
   const [setLocation, { isError, isSuccess, isLoading }] = useSetLocationMutation();
@@ -25,6 +25,13 @@ const Catalogs: React.FC = (): React.ReactElement => {
     loginValidations,
     setLocation,
   );
+  const navigate = useNavigate();
+
+  useEffect((): void => {
+    if (isError) {
+      navigate(`/Catalogs/${catalogType}`);
+    }
+  }, [isError]);
 
   return (
     <div className="grid w-[90%] mx-auto my-4 place-items-center">

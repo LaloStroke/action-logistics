@@ -24,8 +24,9 @@ const Router: React.FC = (): JSX.Element => {
           <Route path="/Transactions/:selectedTransactionOption" element={<Transactions />} />
           <Route path=":type/Transactions/:selectedTransactionsOption" element={<Transactions />} />
 
-          <Route path="/Configs" element={<Configs />} />
           <Route path="/Configs/:selectedConfigOption" element={<Configs />} />
+          <Route path=":type/Configs/:selectedConfigOption" element={<Configs />} />
+
           <Route path="*" element={<NotFound />} />
         </Switch>
       </Layout>

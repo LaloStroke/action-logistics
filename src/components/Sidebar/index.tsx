@@ -167,11 +167,9 @@ const Sidebar: React.FC = (): JSX.Element => {
               <GrDocumentConfig />
             </CustomLink>
           </div>
-          <div className="logout">
-            <button className="bg-blue w-16 h-12 rounded-md">
-              <BiLogOut />
-            </button>
-          </div>
+          <button className="flex justify-center items-center">
+            <BiLogOut />
+          </button>
         </div>
       )}
     </div>
@@ -190,7 +188,10 @@ const CustomLink: React.FC<{
   return (
     <div>
       {isOpen === true ? (
-        <Link className={`${className ? className : 'duration-300 w-28 h-full'} `} to={to}>
+        <Link
+          className={`${className ? className : 'duration-300 w-28 h-full cursor-pointer'} `}
+          to={to}
+        >
           <div
             className={`grid place-content-center px-4 h-full duration-300 cursor-pointer  ${
               isActive ? 'bg-lightOrange duration-300 font-bold hover:tracking-normal' : ''

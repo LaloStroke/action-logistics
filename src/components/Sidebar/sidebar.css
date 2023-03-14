@@ -2,14 +2,12 @@
   grid-area: header;
   width: 16rem;
   height: 100vh;
-  border: solid;
-  //border-color: blue;
   transition-duration: 0.3s;
   display: grid;
   grid-template-areas:
-    "title"
-    "select"
-    "logout";
+    'title'
+    'select'
+    'logout';
   grid-template-rows: 3rem 1fr 3rem;
   grid-template-columns: 1fr;
   transition-duration: 0.3s;
@@ -19,16 +17,15 @@
   grid-area: header;
   width: 3rem;
   height: 100vh;
-  border: solid;
-  //border-color: blue;
   transition-duration: 0.3s;
   overflow: hidden;
   display: grid;
   grid-template-areas:
-    "title"
-    "select"
-    "logout";
+    'title'
+    'select'
+    'logout';
   grid-template-rows: 3rem 1fr 3rem;
+  padding-bottom: 1rem;
   grid-template-columns: 1fr;
   transition-duration: 0.3s;
 }
@@ -36,20 +33,15 @@
 .title {
   grid-area: title;
   background-color: transparent;
-  border: solid;
-  border-color: blue;
   transition-duration: 0.3s;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   padding: 0 1rem;
 }
 
 .select {
   grid-area: select;
-  background-color: #f1f1f1;
-  border: solid;
-  border-color: orange;
   transition-duration: 0.3s;
   display: flex;
   flex-direction: column;
@@ -57,15 +49,4 @@
   padding: 1rem 0;
   gap: 1rem;
   width: 100%;
-}
-
-.logout {
-  grid-area: logout;
-  background-color: #f1f1f1;
-  border: solid;
-  border-color: green;
-  transition-duration: 0.3s;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }

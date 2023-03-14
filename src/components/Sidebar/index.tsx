@@ -13,13 +13,15 @@ import SelectOptions from '../../constants/selectOptions';
 import './sidebar.css';
 import SelectOption from '../Select/SelectOption/SelectOption';
 import Select from '../Select';
+import { RxHamburgerMenu } from 'react-icons/rx';
+import { FaTractor } from 'react-icons/fa';
+import { GrTransaction } from 'react-icons/gr';
+import { AiOutlineBook } from 'react-icons/ai';
+import { GrDocumentConfig } from 'react-icons/gr';
+import { BiLogOut } from 'react-icons/bi';
 
 const Sidebar: React.FC = (): JSX.Element => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  const [selectAssetsOpen, setSelectAssetsOpen] = useState<boolean>(false);
-  const [selectTransactionsOpen, setSelectTransactionsOpen] = useState<boolean>(false);
-  const [selectCatalogsOpen, setSelectCatalogsOpen] = useState<boolean>(false);
-  const [selectConfigsOpen, setSelectConfigsOpen] = useState<boolean>(false);
 
   const dispatch = useDispatch();
 
@@ -30,32 +32,10 @@ const Sidebar: React.FC = (): JSX.Element => {
     setIsOpen(false);
   };
 
-  const handleSelectAssetsOpen = () => {
-    setSelectAssetsOpen(!selectAssetsOpen);
-  };
-  const handleSelectTransactionsOpen = () => {
-    setSelectTransactionsOpen(!selectTransactionsOpen);
-  };
-  const handleSelectCatalogsOpen = () => {
-    setSelectCatalogsOpen(!selectCatalogsOpen);
-  };
-  const handleSelectConfigsOpen = () => {
-    setSelectConfigsOpen(!selectConfigsOpen);
-  };
-
   const sidebarRef = useRef<HTMLDivElement>(null);
-  const selectAssetsRef = useRef<HTMLDivElement>(null);
-  const selectTransactionsRef = useRef<HTMLDivElement>(null);
-  const selectCatalogsRef = useRef<HTMLDivElement>(null);
-  const selectConfigsRef = useRef<HTMLDivElement>(null);
 
   useOnClickOutside(sidebarRef, handleOutsideOpen);
-  useOnClickOutside(selectAssetsRef, handleSelectAssetsOpen);
-  useOnClickOutside(selectTransactionsRef, handleSelectTransactionsOpen);
-  useOnClickOutside(selectCatalogsRef, handleSelectCatalogsOpen);
-  useOnClickOutside(selectConfigsRef, handleSelectConfigsOpen);
 
-  const handleStyles = isOpen ? 'open' : 'close';
   const handleAssets = (value: Assets): void => {
     dispatch(setAssetsSelected(value));
   };
@@ -77,77 +57,123 @@ const Sidebar: React.FC = (): JSX.Element => {
     dispatch(setSidebarOpen(isOpen));
   }, [isOpen]);
   return (
-    <div className={handleStyles} ref={sidebarRef} onClick={handleOpen}>
-      Sidebar
-      <div ref={selectAssetsRef}>
-        <Select
-          defaultValue={'All Assets'}
-          staticPlaceholder={'Assets'}
-          selectHandler={handleAssets}
-          placeholder="Assets"
-        >
-          {(Assets as string[]).map((Assets) => (
-            <CustomLink to={`/Assets/${Assets == 'All Assets' ? 'all' : Assets}`} key={Assets}>
-              <SelectOption value={Assets}>{Assets}</SelectOption>
+    <div ref={sidebarRef} onClick={handleOpen}>
+      {isOpen ? (
+        <div className="open">
+          <div className="title">
+            <RxHamburgerMenu />
+            Action Logistics
+          </div>
+          <div className="select">
+            <div>
+              <Select
+                defaultValue={'All Assets'}
+                staticPlaceholder={'Assets'}
+                selectHandler={handleAssets}
+                placeholder="Assets"
+                className="bg-primary rounded-md p-4 relative w-56 cursor-pointer border-none duration-300"
+                optionsStyle="bg-secondary list-none relative w-full left-0 top-4 bottom-22 overflow-auto h-36 rounded-md flex flex-col duration-300"
+              >
+                {(Assets as string[]).map((Assets) => (
+                  <CustomLink
+                    to={`/Assets/${Assets == 'All Assets' ? 'all' : Assets}`}
+                    key={Assets}
+                    isOpen={isOpen}
+                  >
+                    <SelectOption value={Assets}>{Assets}</SelectOption>
+                  </CustomLink>
+                ))}
+              </Select>
+            </div>
+            <div>
+              <Select
+                defaultValue={'Due'}
+                staticPlaceholder={'Transactions'}
+                selectHandler={handleTransactions}
+                placeholder="Transactions"
+                className="bg-primary rounded-md p-4 relative w-56 cursor-pointer border-none duration-300"
+                optionsStyle="bg-secondary list-none relative w-full left-0 top-4 right-2 overflow-auto max-h-36 rounded-md flex flex-col duration-300"
+              >
+                {(Transactions as string[]).map((Transactions) => (
+                  <CustomLink
+                    to={`${
+                      Transactions === 'Swap Request' || Transactions === 'Asset Return'
+                        ? `create/Transactions/${Transactions}`
+                        : `/Transactions/${Transactions}`
+                    }`}
+                    key={Transactions}
+                    isOpen={isOpen}
+                  >
+                    <SelectOption value={Transactions}>{Transactions}</SelectOption>
+                  </CustomLink>
+                ))}
+              </Select>
+            </div>
+            <div>
+              <Select
+                defaultValue={'Locations'}
+                staticPlaceholder={'Catalogs'}
+                selectHandler={handleCatalogs}
+                placeholder="Catalogs"
+                className="bg-primary rounded-md p-4 relative w-56 cursor-pointer border-none duration-300"
+                optionsStyle="bg-secondary list-none relative w-full left-0 top-4 right-2 overflow-auto max-h-36 rounded-md flex flex-col duration-300"
+              >
+                {(Catalogs as string[]).map((Catalogs) => (
+                  <CustomLink to={`/Catalogs/${Catalogs}`} key={Catalogs} isOpen={isOpen}>
+                    <SelectOption value={Catalogs}>{Catalogs}</SelectOption>
+                  </CustomLink>
+                ))}
+              </Select>
+            </div>
+            <div>
+              <Select
+                defaultValue={'Locations'}
+                staticPlaceholder={'Configs'}
+                selectHandler={handleConfigs}
+                placeholder="Configs"
+                className="bg-primary rounded-md p-4 relative w-56 cursor-pointer border-none duration-300"
+                optionsStyle="bg-secondary list-none relative w-full left-0 top-4 right-2 overflow-auto max-h-36 rounded-md flex flex-col duration-300"
+              >
+                {(Configs as string[]).map((Configs) => (
+                  <CustomLink to={`/Configs/${Configs}`} key={Configs} isOpen={isOpen}>
+                    <SelectOption value={Configs}>{Configs}</SelectOption>
+                  </CustomLink>
+                ))}
+              </Select>
+            </div>
+          </div>
+          <div className="logout">
+            <Link to="/login">
+              <button className="bg-blue w-16 h-12 rounded-md">Logout</button>
+            </Link>
+          </div>
+        </div>
+      ) : (
+        <div className="close">
+          <div className="title">
+            <RxHamburgerMenu />
+          </div>
+          <div className="select">
+            <CustomLink to={`/Assets/`} isOpen={isOpen}>
+              <FaTractor />
             </CustomLink>
-          ))}
-        </Select>
-      </div>
-      <div ref={selectTransactionsRef}>
-        <Select
-          defaultValue={'Due'}
-          staticPlaceholder={'Transactions'}
-          selectHandler={handleTransactions}
-          placeholder="Transactions"
-          className=""
-          optionsStyle=""
-        >
-          {(Transactions as string[]).map((Transactions) => (
-            <CustomLink
-              to={`${
-                Transactions === 'Swap Request' || Transactions === 'Asset Return'
-                  ? 'create/Transactions/${Transactions}'
-                  : `/Transactions/${Transactions}`
-              }`}
-              key={Transactions}
-            >
-              <SelectOption value={Transactions}>{Transactions}</SelectOption>
+            <CustomLink to="/Transactions/" isOpen={isOpen}>
+              <GrTransaction />
             </CustomLink>
-          ))}
-        </Select>
-      </div>
-      <div ref={selectCatalogsRef}>
-        <Select
-          defaultValue={'Locations'}
-          staticPlaceholder={'Catalogs'}
-          selectHandler={handleCatalogs}
-          placeholder="Catalogs"
-          className=""
-          optionsStyle=""
-        >
-          {(Catalogs as string[]).map((Catalogs) => (
-            <CustomLink to={`/Catalogs/${Catalogs}`} key={Catalogs}>
-              <SelectOption value={Catalogs}>{Catalogs}</SelectOption>
+            <CustomLink to="/Catalogs/" isOpen={isOpen}>
+              <AiOutlineBook />
             </CustomLink>
-          ))}
-        </Select>
-      </div>
-      <div ref={selectConfigsRef}>
-        <Select
-          defaultValue={'Locations'}
-          staticPlaceholder={'Configs'}
-          selectHandler={handleConfigs}
-          placeholder="Configs"
-          className=""
-          optionsStyle=""
-        >
-          {(Configs as string[]).map((Configs) => (
-            <CustomLink to={`/Configs/${Configs}`} key={Configs}>
-              <SelectOption value={Configs}>{Configs}</SelectOption>
+            <CustomLink to="/Configs/" isOpen={isOpen}>
+              <GrDocumentConfig />
             </CustomLink>
-          ))}
-        </Select>
-      </div>
+          </div>
+          <div className="logout">
+            <button className="bg-blue w-16 h-12 rounded-md">
+              <BiLogOut />
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
@@ -156,19 +182,35 @@ const CustomLink: React.FC<{
   to: string;
   children: JSX.Element;
   className?: string;
-}> = ({ to, children, className }) => {
-  const resolvedPath = useResolvedPath(to);
+  isOpen: boolean;
+}> = ({ to, children, className, isOpen }) => {
+  const resolvedPath = useResolvedPath(to as string);
   const isActive = useMatch({ path: resolvedPath.pathname, end: true });
+
   return (
-    <Link className={`${className ? className : 'duration-300 w-28 h-full'} `} to={to}>
-      <div
-        className={`grid place-content-center px-4 h-full duration-300 cursor-pointer  ${
-          isActive ? 'bg-lightOrange duration-300 font-bold hover:tracking-normal' : ''
-        }`}
-      >
-        {children}
-      </div>
-    </Link>
+    <div>
+      {isOpen === true ? (
+        <Link className={`${className ? className : 'duration-300 w-28 h-full'} `} to={to}>
+          <div
+            className={`grid place-content-center px-4 h-full duration-300 cursor-pointer  ${
+              isActive ? 'bg-lightOrange duration-300 font-bold hover:tracking-normal' : ''
+            }`}
+          >
+            {children}
+          </div>
+        </Link>
+      ) : (
+        <Link to={to}>
+          <div
+            className={`grid place-content-center cursor-pointer gap-4 w-8 h-8 ${
+              isActive ? 'bg-cyan-300' : ''
+            }`}
+          >
+            {children}
+          </div>
+        </Link>
+      )}
+    </div>
   );
 };
 

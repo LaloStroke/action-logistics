@@ -34,7 +34,9 @@ const Catalogs: React.FC = (): React.ReactElement => {
 
   return (
     <div className="grid w-[90%] mx-auto my-4 place-items-center">
-      <p className="text-center font-bold text-lg">{selectedOption}</p>
+      <p className="text-center font-bold text-lg">
+        {catalog}: {selectedOption}
+      </p>
       <Form
         formFields={
           Forms.get(editable as Forms) || (Forms.get("login") as FormField[])

@@ -5,8 +5,8 @@ import {
   setSidebarOpen,
   setAssetsSelected,
   setTransactionSelected,
-  setCatalogSelected,
-  setConfigSelected
+  setConfigSelected,
+  setCatalogSelected
 } from "@/store/services/slice/appSlice";
 import { useDispatch } from "react-redux";
 import SelectOptions from "../../constants/selectOptions";
@@ -33,23 +33,22 @@ const Sidebar: React.FC = (): JSX.Element => {
   const handleTransactions = (value: Transactions): void => {
     dispatch(setTransactionSelected(value));
   };
-  const handleCatalogs = (value: CatalogPoints): void => {
-    dispatch(setCatalogSelected(value));
-  };
   const handleConfigs = (value: ConfigPoints): void => {
     dispatch(setConfigSelected(value));
+  };
+  const handleCatalogs = (value: CatalogPoints): void => {
+    dispatch(setCatalogSelected(value));
   };
 
   const Assets = SelectOptions.get("Assets");
   const Transactions = SelectOptions.get("Transactions");
-  const Catalogs = SelectOptions.get("CatalogPoints");
   const Configs = SelectOptions.get("ConfigPoints");
+  const Catalogs = SelectOptions.get("CatalogPoints");
   useEffect(() => {
     dispatch(setSidebarOpen(isOpen));
   }, [isOpen]);
-  console.log(isOpen, "isOpen");
   return (
-    <div className={`${handleStyles}`} ref={sidebarRef} onClick={handleOpen}>
+    <div className={handleStyles} ref={sidebarRef} onClick={handleOpen}>
       Sidebar
       <div>
         <Select
@@ -58,12 +57,14 @@ const Sidebar: React.FC = (): JSX.Element => {
           staticPlaceholder={"Assets"}
           selectHandler={handleAssets}
           placeholder="Assets"
+          className="w-28 bg-transparent rounded-md py-4 px-2 relative cursor-pointer border-none h-full"
         >
           {(Assets as string[]).map((Assets) => (
-            <CustomLink to={`/Assets/${Assets == "All Assets" ? "" : Assets}`}>
-              <SelectOption key={Assets} value={Assets}>
-                {Assets}
-              </SelectOption>
+            <CustomLink
+              to={`/Assets/${Assets == "All Assets" ? "all" : Assets}`}
+              key={Assets}
+            >
+              <SelectOption value={Assets}>{Assets}</SelectOption>
             </CustomLink>
           ))}
         </Select>
@@ -79,10 +80,8 @@ const Sidebar: React.FC = (): JSX.Element => {
           optionsStyle=""
         >
           {(Transactions as string[]).map((Transactions) => (
-            <CustomLink to={`/Transactions/${Transactions}`}>
-              <SelectOption key={Transactions} value={Transactions}>
-                {Transactions}
-              </SelectOption>
+            <CustomLink to={`/Transactions/${Transactions}`} key={Transactions}>
+              <SelectOption value={Transactions}>{Transactions}</SelectOption>
             </CustomLink>
           ))}
         </Select>
@@ -98,10 +97,8 @@ const Sidebar: React.FC = (): JSX.Element => {
           optionsStyle=""
         >
           {(Catalogs as string[]).map((Catalogs) => (
-            <CustomLink to={`/create/Catalogs/${Catalogs}`}>
-              <SelectOption key={Catalogs} value={Catalogs}>
-                {Catalogs}
-              </SelectOption>
+            <CustomLink to={`/create/Catalogs/${Catalogs}`} key={Catalogs}>
+              <SelectOption value={Catalogs}>{Catalogs}</SelectOption>
             </CustomLink>
           ))}
         </Select>
@@ -117,10 +114,8 @@ const Sidebar: React.FC = (): JSX.Element => {
           optionsStyle=""
         >
           {(Configs as string[]).map((Configs) => (
-            <CustomLink to={`/Configs/${Configs}`}>
-              <SelectOption key={Configs} value={Configs}>
-                {Configs}
-              </SelectOption>
+            <CustomLink to={`/Configs/${Configs}`} key={Configs}>
+              <SelectOption value={Configs}>{Configs}</SelectOption>
             </CustomLink>
           ))}
         </Select>

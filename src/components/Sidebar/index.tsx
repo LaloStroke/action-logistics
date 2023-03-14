@@ -107,7 +107,15 @@ const Sidebar: React.FC = (): JSX.Element => {
           optionsStyle=""
         >
           {(Transactions as string[]).map((Transactions) => (
-            <CustomLink to={`/Transactions/${Transactions}`} key={Transactions}>
+            <CustomLink
+              to={`${
+                Transactions === "Swap Request" ||
+                Transactions === "Asset Return"
+                  ? "create/Transactions/${Transactions}"
+                  : `/Transactions/${Transactions}`
+              }`}
+              key={Transactions}
+            >
               <SelectOption value={Transactions}>{Transactions}</SelectOption>
             </CustomLink>
           ))}

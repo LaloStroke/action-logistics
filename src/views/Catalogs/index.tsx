@@ -10,7 +10,6 @@ import { useParams } from "react-router";
 const Catalogs: React.FC = (): React.ReactElement => {
   const [setLocation, { isError, isSuccess, isLoading }] =
     useSetLocationMutation();
-  const [editable, setEditable] = useState<string>("");
   const { selectedOption, type, catalog, id } = useParams();
   const { handleChange, handleSubmit, formValues, formErrors } = useForm(
     {
@@ -31,11 +30,12 @@ const Catalogs: React.FC = (): React.ReactElement => {
   return (
     <div className="grid w-[90%] mx-auto my-4 place-items-center">
       <p className="text-center font-bold text-lg">
-        {selectedOption}: {id}
+        {type}: {selectedOption}
       </p>
       <Form
         formFields={
-          Forms.get(editable as Forms) || (Forms.get("login") as FormField[])
+          Forms.get(selectedOption as Forms) ||
+          (Forms.get("login") as FormField[])
         }
         formErrors={formErrors}
         handleChange={handleChange}

@@ -6,12 +6,15 @@ import Button from '../../components/Button';
 import { AiFillEye } from 'react-icons/ai';
 import { useParams } from 'react-router';
 import Switch from '../../components/Switch';
+import Select from '../../components/Select';
+import SelectOption from '../../components/Select/SelectOption/SelectOption';
+import Locations from '../../constants/Locations';
 
 const Home: React.FC = (): JSX.Element => {
   const [inOperation, setInOperation] = useState<boolean>(false);
   const { selectedAssetOption } = useParams();
 
-  const tbodyData: Logistics[] = [
+  const tbodyData: Assets[] = [
     {
       ID: '1',
       'S/N': '1',
@@ -68,7 +71,7 @@ const Home: React.FC = (): JSX.Element => {
     },
   ];
 
-  const columns: ColumnDefinitionType<Logistics, keyof Logistics>[] = [
+  const columns: ColumnDefinitionType<Assets, keyof Assets>[] = [
     {
       key: 'ID',
       header: 'ID',
@@ -143,6 +146,17 @@ const Home: React.FC = (): JSX.Element => {
             <span>Out Operation</span>
             <Switch handleChange={handleSwitch} id="inOperation" value={inOperation} />
             <span>In Operation</span>
+          </>
+        )}
+        {selectedAssetOption === 'Location' && (
+          <>
+            <Select>
+              {Locations.map((location) => (
+                <SelectOption value={location} key={location}>
+                  {location}
+                </SelectOption>
+              ))}
+            </Select>
           </>
         )}
       </div>

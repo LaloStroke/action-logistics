@@ -1,7 +1,7 @@
-import React, { useRef, useState, useEffect, ReactNode } from "react";
-import { SelectContext } from "./SelectContext";
-import useOnClickOutside from "../../hooks/useOnClickOutside/useOnClickOutside";
-import { IoMdArrowDropup } from "react-icons/io";
+import React, { useRef, useState, useEffect, ReactNode } from 'react';
+import { SelectContext } from './SelectContext';
+import useOnClickOutside from '../../hooks/useOnClickOutside/useOnClickOutside';
+import { IoMdArrowDropup } from 'react-icons/io';
 
 const Select: React.FC<{
   children: ReactNode | ReactNode[];
@@ -20,14 +20,12 @@ const Select: React.FC<{
   defaultValue,
   onHover,
   optionsStyle,
-  placeholder
+  placeholder,
 }): JSX.Element => {
-  const [selectedOption, setSelectedOption] = useState<string>(
-    defaultValue || ""
-  );
+  const [selectedOption, setSelectedOption] = useState<string>(defaultValue || '');
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const handleIsOpen = () => setIsOpen(!isOpen);
-  const selectPlaceHolder = placeholder || "Select an option";
+  const selectPlaceHolder = placeholder || 'Select an option';
   const selectRef = useRef<HTMLDivElement>(null);
 
   const handleClickOutside = () => setIsOpen(false);
@@ -44,14 +42,12 @@ const Select: React.FC<{
   }, [selectHandler, selectedOption]);
 
   return (
-    <SelectContext.Provider
-      value={{ selectedOption, changeSelectedOption: updateSelectedOption }}
-    >
+    <SelectContext.Provider value={{ selectedOption, changeSelectedOption: updateSelectedOption }}>
       <div
         className={
           className
             ? className
-            : "bg-yellow rounded-md p-4 relative w-56 cursor-pointer border-none"
+            : 'bg-primary rounded-md p-4 relative w-56 cursor-pointer border-none'
         }
         onMouseEnter={onHover ? handleIsOpen : undefined}
         onMouseLeave={onHover ? handleIsOpen : undefined}
@@ -59,12 +55,8 @@ const Select: React.FC<{
         onClick={handleIsOpen}
       >
         <span className="flex h-full justify-between items-center">
-          {staticPlaceholder
-            ? staticPlaceholder
-            : selectedOption || selectPlaceHolder}
-          <div
-            className={`duration-300 scale-125 ${isOpen ? "" : "rotate-180"}`}
-          >
+          {staticPlaceholder ? staticPlaceholder : selectedOption || selectPlaceHolder}
+          <div className={`duration-300 scale-125 ${isOpen ? '' : 'rotate-180'}`}>
             <IoMdArrowDropup />
           </div>
         </span>
@@ -73,7 +65,7 @@ const Select: React.FC<{
             className={`${
               optionsStyle
                 ? optionsStyle
-                : "bg-yellow list-none relative w-48 flex flex-col right-[-2.5rem] top-[3.25rem]"
+                : 'bg-secondary list-none absolute w-full left-0 top-16 overflow-auto max-h-36 rounded-md z-10 flex flex-col '
             }`}
           >
             {children}

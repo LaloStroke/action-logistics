@@ -6,7 +6,7 @@ import Button from '../../components/Button';
 import { loginValidations } from '@/constants/validations/login';
 import { Forms } from '../../constants/forms';
 import { useNavigate, useParams } from 'react-router';
-import { ShowToast } from '@/components/Toast';
+import { ShowToast } from '../../components/Toast';
 
 const Catalogs: React.FC = (): React.ReactElement => {
   const [setLocation, { isError, isSuccess, isLoading }] = useSetLocationMutation();
@@ -31,7 +31,7 @@ const Catalogs: React.FC = (): React.ReactElement => {
   useEffect((): void => {
     if (isError) {
       ShowToast({ label: 'success c:', type: 'success' });
-      navigate(`/Configs/${catalogType}`);
+      navigate(`/Catalogs/${catalogType}`);
       return;
     }
   }, [isError]);

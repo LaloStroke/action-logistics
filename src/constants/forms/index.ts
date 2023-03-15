@@ -6,8 +6,10 @@ import { EquipmentTypeFields } from './equipmentfields';
 import { EquipmentSubType } from './equipmentSubType';
 import { InsuranceCompanies } from './insuranceCompanies';
 import { InsuranceTypes } from './insuranceTypes';
+import { LocationsConfigFields } from './Config/locations';
+import { AssetsFields } from './Config/assets';
 
-const Forms: Map<Forms, FormField[]> = new Map([
+export const Forms: Map<Forms, FormField[]> = new Map([
   ['login', loginFields],
   ['Locations', LocationFields],
   ['Users', UsersFields],
@@ -18,4 +20,8 @@ const Forms: Map<Forms, FormField[]> = new Map([
   ['Insurance-types', InsuranceTypes],
 ]);
 
-export default Forms;
+export const FormsConfig: Map<FormsConfig, FormField[]> = new Map([
+  ['login', loginFields],
+  ['Locations', LocationsConfigFields],
+  ['Assets', AssetsFields],
+]);

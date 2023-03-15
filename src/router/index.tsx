@@ -8,6 +8,7 @@ import Configs from '../views/Configs';
 import Layout from '../components/Layout';
 import Login from '../views/Login';
 import CatalogsTable from '@/views/Catalogs/CatalogsTable';
+import ConfigTables from '@/views/Configs/ConfigTables';
 
 const Router: React.FC = (): JSX.Element => {
   return (
@@ -24,8 +25,8 @@ const Router: React.FC = (): JSX.Element => {
           <Route path="/Transactions/:selectedTransactionOption" element={<Transactions />} />
           <Route path=":type/Transactions/:selectedTransactionsOption" element={<Transactions />} />
 
-          <Route path="/Configs/:selectedConfigOption" element={<Configs />} />
-          <Route path=":type/Configs/:selectedConfigOption" element={<Configs />} />
+          <Route path=":type/Configs/:configType/:selectedConfigOption" element={<Configs />} />
+          <Route path="/Configs/:selectedConfigOption" element={<ConfigTables />} />
 
           <Route path="*" element={<NotFound />} />
         </Switch>

@@ -4,8 +4,9 @@ import { useSetLocationMutation } from '../../store/services/userService';
 import useForm from '../../hooks/useForm/useForm';
 import Button from '../../components/Button';
 import { loginValidations } from '@/constants/validations/login';
-import Forms from '../../constants/forms';
+import { Forms } from '../../constants/forms';
 import { useNavigate, useParams } from 'react-router';
+import { ShowToast } from '@/components/Toast';
 
 const Catalogs: React.FC = (): React.ReactElement => {
   const [setLocation, { isError, isSuccess, isLoading }] = useSetLocationMutation();
@@ -29,7 +30,9 @@ const Catalogs: React.FC = (): React.ReactElement => {
 
   useEffect((): void => {
     if (isError) {
-      navigate(`/Catalogs/${catalogType}`);
+      ShowToast({ label: 'success c:', type: 'success' });
+      navigate(`/Configs/${catalogType}`);
+      return;
     }
   }, [isError]);
 

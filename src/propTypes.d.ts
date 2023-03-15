@@ -1,4 +1,4 @@
-declare module "who-fields-validator";
+declare module 'who-fields-validator';
 
 declare type IStandardValidatorResponse = {
   evaluatedKey: string;
@@ -13,6 +13,8 @@ declare type DataTable = {
 
 declare type FormField = {
   textArea?: boolean;
+  optionsSelect?: optionsSelect[];
+  Select?: boolean;
   type: TInputs;
   name: string;
   placeholder: string;
@@ -22,7 +24,7 @@ declare type FormField = {
 
 declare type optionsSelect = string;
 
-declare type Widths = "full" | "half" | "third" | "quarter" | "small";
+declare type Widths = 'full' | 'half' | 'third' | 'quarter' | 'small';
 
 declare type TFieldValidationsOption = {
   condition: string | boolean | number | ((value1: any) => unknown);

@@ -23,4 +23,6 @@ declare type Forms =
   | 'Insurance-types'
   | 'login';
 
+declare type FormsConfig = 'Locations' | 'Assets' | 'Workflows' | 'login';
+
 declare type SelectOptions = 'Assets' | 'Transactions' | 'CatalogPoints' | 'ConfigPoints';

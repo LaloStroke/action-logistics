@@ -3,13 +3,14 @@ import Form from '../../components/Form';
 import { useSetLocationMutation } from '../../store/services/userService';
 import useForm from '../../hooks/useForm/useForm';
 import Button from '../../components/Button';
-import { loginValidations } from '@/constants/validations/login';
-import Forms from '../../constants/forms';
+import { loginValidations } from '../../constants/validations/login';
+import { FormsConfig } from '../../constants/forms';
 import { useNavigate, useParams } from 'react-router';
+import { ShowToast } from '../../components/Toast';
 
 const Configs: React.FC = (): React.ReactElement => {
   const [setLocation, { isError, isSuccess, isLoading }] = useSetLocationMutation();
-  const { catalogType, type, selectedConfigOption } = useParams();
+  const { configType, type, selectedConfigOption } = useParams();
   const { handleChange, handleSubmit, formValues, formErrors } = useForm(
     {
       ID: '',
@@ -29,17 +30,21 @@ const Configs: React.FC = (): React.ReactElement => {
 
   useEffect((): void => {
     if (isError) {
-      navigate(`/Configs/${catalogType}`);
+      ShowToast({ label: 'success c:', type: 'success' });
+      navigate(`/Configs/${configType}`);
+      return;
     }
   }, [isError]);
 
   return (
-    <div className="grid w-[90%] mx-auto my-4 place-items-center">
+    <div className="w-[90%] mx-auto my-4 flex flex-col gap-2 items-center">
       <p className="text-center font-bold text-lg">
-        {type} {catalogType}: {selectedConfigOption}
+        {type} {configType}: {selectedConfigOption}
       </p>
       <Form
-        formFields={Forms.get(catalogType as Forms) || (Forms.get('login') as FormField[])}
+        formFields={
+          FormsConfig.get(configType as FormsConfig) || (FormsConfig.get('login') as FormField[])
+        }
         formErrors={formErrors}
         handleChange={handleChange}
         formData={

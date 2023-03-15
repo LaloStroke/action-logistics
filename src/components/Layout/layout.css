@@ -1,0 +1,40 @@
+.layout {
+  display: grid;
+  grid-template-areas: "header content";
+  grid-template-rows: 1fr;
+  min-height: 100vh;
+
+  @apply grid h-full p-4 duration-300;
+}
+
+.content {
+  grid-area: content;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-areas:
+    "companyName"
+    "contentChildren";
+  grid-template-rows: 3rem 1fr;
+  grid-template-columns: 1fr;
+}
+
+.companyName {
+  grid-area: companyName;
+  display: flex;
+  @apply text-2xl font-bold text-black h-12 w-10/12 bg-primary place-items-center justify-center rounded-md mx-auto;
+}
+.contentChildren {
+  grid-area: contentChildren;
+  @apply h-full;
+}
+
+@media (min-width: 768px) {
+  .layout_open {
+    grid-template-columns: 16rem 1fr;
+  }
+
+  .layout_close {
+    grid-template-columns: 4rem 1fr;
+  }
+}

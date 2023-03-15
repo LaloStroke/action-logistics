@@ -11,6 +11,7 @@ const Select: React.FC<{
   staticPlaceholder?: string;
   selectHandler?: (values: any) => void;
   className?: string;
+  optionsStyle?: string;
 }> = ({
   children,
   className,
@@ -18,6 +19,7 @@ const Select: React.FC<{
   staticPlaceholder,
   defaultValue,
   onHover,
+  optionsStyle,
   placeholder
 }): JSX.Element => {
   const [selectedOption, setSelectedOption] = useState<string>(
@@ -49,12 +51,10 @@ const Select: React.FC<{
         className={
           className
             ? className
-            : "bg-yellow rounded-md p-4 relative w-56 cursor-pointer border-none"
+            : "bg-primary rounded-md p-4 relative w-56 cursor-pointer border-none"
         }
-        onMouseEnter={onHover ? handleIsOpen : undefined}
-        onMouseLeave={onHover ? handleIsOpen : undefined}
-        ref={selectRef}
         onClick={handleIsOpen}
+        ref={selectRef}
       >
         <span className="flex h-full justify-between items-center">
           {staticPlaceholder
@@ -67,7 +67,13 @@ const Select: React.FC<{
           </div>
         </span>
         {isOpen && (
-          <ul className="bg-yellow list-none absolute w-48 flex flex-col right-[-2.5rem] top-[3.25rem] z-10">
+          <ul
+            className={`${
+              optionsStyle
+                ? optionsStyle
+                : "bg-secondary list-none absolute w-full left-0 top-16 overflow-auto max-h-36 z-10 rounded-md flex flex-col"
+            }`}
+          >
             {children}
           </ul>
         )}

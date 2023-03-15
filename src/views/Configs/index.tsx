@@ -1,14 +1,77 @@
-import React from "react";
-import Layout from "../../components/Layout";
+import React, { useEffect } from 'react';
+import Form from '../../components/Form';
+import { useSetLocationMutation } from '../../store/services/userService';
+import useForm from '../../hooks/useForm/useForm';
+import Button from '../../components/Button';
+import { loginValidations } from '../../constants/validations/login';
+import { FormsConfig } from '../../constants/forms';
+import { useNavigate, useParams } from 'react-router';
+import { ShowToast } from '../../components/Toast';
 
-const Configs: React.FC = (): JSX.Element => {
+const Configs: React.FC = (): React.ReactElement => {
+  const [setLocation, { isError, isSuccess, isLoading }] = useSetLocationMutation();
+  const { configType, type, selectedConfigOption } = useParams();
+  const { handleChange, handleSubmit, formValues, formErrors } = useForm(
+    {
+      ID: '',
+      State: '',
+      Address: '',
+      Location: '',
+      LocationName: '',
+      City: '',
+      ZipCode: '',
+      Assets: [],
+      TotalAssets: '',
+    },
+    loginValidations,
+    setLocation,
+  );
+  const navigate = useNavigate();
+
+  useEffect((): void => {
+    if (isError) {
+      ShowToast({ label: 'success c:', type: 'success' });
+      navigate(`/Configs/${configType}`);
+      return;
+    }
+  }, [isError]);
+
   return (
-    <>
-      <Layout>
-        <div>Configs</div>
-        <></>
-      </Layout>
-    </>
+    <div className="w-[90%] mx-auto my-4 flex flex-col gap-2 items-center">
+      <p className="text-center font-bold text-lg">
+        {type} {configType}: {selectedConfigOption}
+      </p>
+      <Form
+        formFields={
+          FormsConfig.get(configType as FormsConfig) || (FormsConfig.get('login') as FormField[])
+        }
+        formErrors={formErrors}
+        handleChange={handleChange}
+        formData={
+          type === 'edit'
+            ? {
+                Address: '1234 Main St',
+                City: 'Anytown',
+                ID: '1234',
+                State: 'CA',
+                Assets: 'All Assets',
+                Location: 'All Locations',
+                LocationName: 'All Locations',
+                TotalAssets: 1234,
+                ZipCode: 12345,
+              }
+            : formValues
+        }
+        onSubmit={handleSubmit}
+      />
+      <div className="w-full flex justify-center">
+        <div className="my-4 w-full grid place-items-center max-w-2xl">
+          <Button onClick={handleSubmit} type="primary">
+            Submit
+          </Button>
+        </div>
+      </div>
+    </div>
   );
 };
 

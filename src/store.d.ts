@@ -3,6 +3,7 @@ declare interface Store {
   configSelected: ConfigPoints;
   transactions: Transactions;
   assets: Assets;
+  sidebarOpen: boolean;
 }
 
 declare interface App {

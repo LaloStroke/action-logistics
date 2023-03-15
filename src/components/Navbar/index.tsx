@@ -56,12 +56,11 @@ const Navbar: React.FC = (): JSX.Element => {
     dispatch(setAssetsSelected(value));
   };
   return (
-    <header className="flex bg-orange items-center justify-between px-2 h-12 w-full">
+    <header className="flex bg-orange items-center justify-between px-2 h-12 ">
       <Link to={"/home"} className="w-36">
         <h1 className="font-bold tracking-wide">Action Logistics</h1>
       </Link>
       <nav className="hidden px-2 gap-4 h-full md:flex md:items-center">
-        {/* cosas que me faltan por hacer XD el assets select */}
         <CustomLink to="/Home">
           <Select
             onHover
@@ -71,9 +70,9 @@ const Navbar: React.FC = (): JSX.Element => {
             placeholder="Assets"
             className="w-28 bg-transparent rounded-md py-4 px-2 relative cursor-pointer border-none h-full"
           >
-            {Transactions.map((Transactions) => (
-              <SelectOption key={Transactions} value={Transactions}>
-                {Transactions}
+            {Assets.map((Assets) => (
+              <SelectOption key={Assets} value={Assets}>
+                {Assets}
               </SelectOption>
             ))}
           </Select>
@@ -96,7 +95,7 @@ const Navbar: React.FC = (): JSX.Element => {
           </Select>
         </CustomLink>
 
-        <CustomLink to="/Catalogs">
+        <CustomLink to="/create/Catalogs/Locations">
           <Select
             onHover
             defaultValue={"Locations"}
@@ -107,7 +106,11 @@ const Navbar: React.FC = (): JSX.Element => {
           >
             {catalogPoints.map((catalogPoints) => (
               <SelectOption key={catalogPoints} value={catalogPoints}>
-                <Link to={catalogPoints}>{catalogPoints}</Link>
+                <Link
+                  to={`/create/Catalogs/${catalogPoints.replace(/\s/g, "")}`}
+                >
+                  {catalogPoints}
+                </Link>
               </SelectOption>
             ))}
           </Select>

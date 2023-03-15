@@ -1,0 +1,39 @@
+.checkbox {
+  @apply hidden;
+}
+
+.checkbox:checked ~ .switch {
+  @apply bg-secondary;
+}
+
+.checkbox:checked ~ .switch::before {
+  @apply translate-x-8;
+}
+
+.switch {
+  height: 2em;
+  width: 4em;
+  border-radius: 3rem;
+  position: relative;
+  z-index: 1;
+  box-size: border-box;
+  cursor: pointer;
+  transition-duration: 0.3s;
+  @apply bg-primary;
+}
+
+.switch::before {
+  content: '';
+  position: relative;
+  top: 0.4em;
+  z-index: 2;
+  left: 0.5em;
+  will-change: transform;
+  display: block;
+  width: 1.2em;
+  height: 1.2em;
+  border-radius: 50%;
+  margin: 0;
+  transition-duration: 0.3s;
+  @apply bg-terciary;
+}

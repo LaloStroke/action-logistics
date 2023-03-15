@@ -9,7 +9,7 @@ const SelectOption: React.FC<{
 
   return (
     <li
-      className="cursor-pointer duration-300 grid place-items-center text-sm text-left rounded-md py-2 px-4 hover:tracking-tighter"
+      className="cursor-pointer duration-300 grid place-items-center text-sm text-left rounded-md py-2 px-4 hover:tracking-tighter hover:bg-secondary"
       onClick={() => changeSelectedOption(value)}
     >
       {children}
